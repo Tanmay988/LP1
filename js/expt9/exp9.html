@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();  // Prevent form from reloading the page
+            
+            // Get input values
+            let name = document.getElementById('name').value.trim();
+            let address = document.getElementById('address').value.trim();
+            let city = document.getElementById('city').value.trim();
+            let state = document.getElementById('state').value.trim();
+            let gender = document.getElementById('gender').value;
+            let mobile = document.getElementById('mobile').value.trim();
+            let email = document.getElementById('email').value.trim();
+            
+            // Error message container
+            let message = "";
+
+            // Validate form fields
+            if (!/^[a-zA-Z\s]+$/.test(name)) message += "Invalid Name. Please enter a valid name.\n";
+            if (address === "") message += "Address cannot be empty.\n";
+            if (!/^[a-zA-Z\s]+$/.test(city)) message += "Invalid City. Please enter a valid city name.\n";
+            if (!/^[a-zA-Z\s]+$/.test(state)) message += "Invalid State. Please enter a valid state name.\n";
+            if (gender === "") message += "Please select your gender.\n";
+            if (!/^\d{10}$/.test(mobile)) message += "Invalid Mobile Number. It should be 10 digits.\n";
+            if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email)) message += "Invalid Email ID. Please enter a valid email.\n";
+
+            if (message) {
+                document.getElementById('message').innerText = message;
+            } else {
+                // Redirect to new page with the form data
+                window.location.href = `exp.html?name=${encodeURIComponent(name)}&address=${encodeURIComponent(address)}&city=${encodeURIComponent(city)}&state=${encodeURIComponent(state)}&gender=${encodeURIComponent(gender)}&mobile=${encodeURIComponent(mobile)}&email=${encodeURIComponent(email)}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Information Form</h1>
+        <form onsubmit="validateForm(event)">
+            <div id="name-section">
+                <label for="name">Name: </label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+            <br>
+            <div id="address-section">
+                <label for="address">Address: </label>
+                <input type="text" id="address" placeholder="Enter your address">
+            </div>
+            <br>
+            <div id="city-section">
+                <label for="city">City: </label>
+                <input type="text" id="city" placeholder="Enter your city">
+            </div>
+            <br>
+            <div id="state-section">
+                <label for="state">State: </label>
+                <input type="text" id="state" placeholder="Enter your state">
+            </div>
+            <br>
+            <div id="gender-section">
+                <label for="gender">Gender: </label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <br>
+            <div id="mobile-section">
+                <label for="mobile">Mobile Number: </label>
+                <input type="text" id="mobile" placeholder="Enter your mobile number">
+            </div>
+            <br>
+            <div id="email-section">
+                <label for="email">Email ID: </label>
+                <input type="text" id="email" placeholder="Enter your email">
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message"></div>
+    </div>
+</body>
+</html>

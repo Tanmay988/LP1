@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Operations</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Array Operations</h2>
+
+    <!-- Input for Array Length -->
+    <label for="lengthInput">Maximum Array Length:</label>
+    <input type="number" id="lengthInput" min="1" placeholder="Enter max length">
+    <button onclick="setLength()">Set Length</button>
+    <p id="res" class="result"></p>
+
+    <!-- Input for Array Elements -->
+    <label for="arrayInput">Array Elements (comma-separated):</label>
+    <input type="text" id="arrayInput" placeholder="e.g. 1,2,3">
+    <button onclick="arrayip()">Set Array</button>
+    <p id="resArray" class="result"></p>
+
+    <!-- Delete Operation -->
+    <label for="delete">Delete an Element:</label>
+    <input type="text" id="delete" placeholder="Value to delete">
+    <button onclick="del()">Delete</button>
+    <p id="resDelete" class="result"></p>
+
+    <!-- Find Operation -->
+    <label for="find">Find an Element:</label>
+    <input type="text" id="find" placeholder="Value to find">
+    <button onclick="find()">Find</button>
+    <p id="resFind" class="result"></p>
+
+    <!-- Empty and Display Operations -->
+    <button onclick="Empty()">Empty Array</button>
+    <p id="resEmpty" class="result"></p>
+
+    <button onclick="Display()">Display Array</button>
+    <p id="resDisplay" class="result"></p>
+</div>
+
+<script>
+    let Array2 = [];
+    let maxLength = 0;
+
+    // Function to set the maximum array length
+    function setLength() {
+        maxLength = parseInt(document.getElementById('lengthInput').value);
+        if (maxLength > 0) {
+            document.getElementById("res").innerHTML = `Maximum array length set to: ${maxLength}`;
+        } else {
+            document.getElementById("res").innerHTML = "Please enter a valid length.";
+        }
+    }
+
+    // Function to set the array elements
+    function arrayip() {
+        const arrval = document.getElementById('arrayInput').value;
+        const tempArray = arrval.split(',');
+
+        if (tempArray.length > maxLength) {
+            document.getElementById("resArray").innerHTML = `Array length exceeds limit of ${maxLength}.`;
+        } else {
+            Array2 = tempArray;
+            document.getElementById("resArray").innerHTML = `Array set: [${Array2.join(', ')}]`;
+        }
+    }
+
+    // Function to delete an element from the array
+    function del() {
+        const val = document.getElementById('delete').value;
+        const index = Array2.indexOf(val);
+
+        if (index !== -1) {
+            Array2.splice(index, 1);
+            document.getElementById("resDelete").innerHTML = `Deleted ${val}. Updated array: [${Array2.join(', ')}]`;
+        } else {
+            document.getElementById("resDelete").innerHTML = `${val} is not in the array.`;
+        }
+    }
+
+    // Function to find an element in the array
+    function find() {
+        const val = document.getElementById('find').value;
+        const index = Array2.indexOf(val);
+
+        if (index !== -1) {
+            document.getElementById("resFind").innerHTML = `${val} found at index ${index}.`;
+        } else {
+            document.getElementById("resFind").innerHTML = `${val} not found in the array.`;
+        }
+    }
+
+    // Function to empty the array
+    function Empty() {
+        Array2 = [];
+        document.getElementById("resEmpty").innerHTML = "Array emptied.";
+    }
+
+    // Function to display the array
+    function Display() {
+        document.getElementById("resDisplay").innerHTML = `Current Array: [${Array2.join(', ')}]`;
+    }
+</script>
+
+</body>
+</html>

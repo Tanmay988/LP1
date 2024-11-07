@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 1</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h2>Area of Triangle</h2>
+            <label for="A">A</label>
+            <input type="number" name="A" id="A">
+            <br>
+            <label for="B">B</label>
+            <input type="number" name="B" id="B">
+            <br>
+            <label for="C">C</label>
+            <input type="number" name="C" id="C">
+            <br>
+            <button onclick="triangleArea()">Calculate Area</button>
+            <h2 id="ans"></h2>
+        </div>
+        <div class="box">
+            <h2>Area of Rectangle</h2>
+            <label for="L">Length</label>
+            <input type="number" name="L" id="L">
+            <br>
+            <label for="B">Breadth</label>
+            <input type="number" name="B" id="Breadth">
+            <br>
+            <button onclick="RectangleArea()">Calculate Area</button>
+            <h2 id="disp"></h2>
+        </div>
+        
+        <div class="box">
+            <h2>Area of Circle</h2>
+            <label for="r">Radius</label>
+            <input type="number" name="r" id="R">
+            <br>
+            <button onclick="circleArea()">Calculate Area</button>
+            <h2 id="display"></h2>
+        </div>
+    </div>
+</body>
+</html>

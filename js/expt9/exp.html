@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <style>
+        .container{
+            text-align: center;
+        }
+        .logout-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // Parse URL parameters
+        function getUrlParams() {
+            let params = new URLSearchParams(window.location.search);
+            return {
+                name: params.get('name'),
+                address: params.get('address'),
+                city: params.get('city'),
+                state: params.get('state'),
+                gender: params.get('gender'),
+                mobile: params.get('mobile'),
+                email: params.get('email'),
+            };
+        }
+
+        // Display student information
+        function displayInfo() {
+            const params = getUrlParams();
+            document.getElementById('student-info').innerHTML = `
+                <h2>Student Information</h2>
+                <p><strong>Name:</strong> ${params.name}</p>
+                <p><strong>Address:</strong> ${params.address}</p>
+                <p><strong>City:</strong> ${params.city}</p>
+                <p><strong>State:</strong> ${params.state}</p>
+                <p><strong>Gender:</strong> ${params.gender}</p>
+                <p><strong>Mobile:</strong> ${params.mobile}</p>
+                <p><strong>Email:</strong> ${params.email}</p>
+            `;
+        }
+    </script>
+</head>
+<body onload="displayInfo()">
+    <div class="container">
+        <div id="student-info"></div>
+        <button class="logout-button" onclick="window.location.href = 'exp9.html'">Logout</button>
+    </div>
+</body>
+</html>
